@@ -1,19 +1,21 @@
 // Imports
 const express = require("express");
-const NewsAPI = require('newsapi');
+const newsApi = require("newsapi");
 const axios = require("axios");
 const cors = require("cors");
+const yelp = require('yelp-fusion');
+const client = yelp.client("CZrlXB5_Zr9EZfPh0KWiPQaBUXtqY7MEz2inggOVIUi0NoAx77hgZ-UDWp-44JkZXJSzhBDxarScb6AFWZQMmBwUrsdhGN7nqEijTaMj2A3EiwiIqCEebVHMCAcpZHYx");
 const bodyParser = require('body-parser');
-const newsapi = new NewsAPI("443d03c9e90443cdad2471c1896ecf96");
+const newsapi = new newsApi("443d03c9e90443cdad2471c1896ecf96");
 const app = express();
 
 
 // Database Start Up
-const InitiateMongoServer = require("./config/db");
+const startDatabase = require("./config/db");
 const Task = require("./config/Task");
-app.use(cors());
-InitiateMongoServer();
+startDatabase();
 
+app.use(cors());
 app.use(express.static('public'))
 app.use(express.json());
 app.use(bodyParser.json());
@@ -147,4 +149,36 @@ app.get('/reddit', (req, res) => {
     .catch(error => console.log(error)) 
 })
 
-app.listen(2023, ()=> {console.log("App is running.")});
+/*    
+    @description: Returns data about a suggested restaurant in Berkeley from the Yelp API
+    @return: JSON object
+        name: the name of the store
+        rating: the rating of the store
+        address: the address of the store
+        recent_review: the most recent review about the store
+        url: url to the store's yelp page
+    @status: works correctly
+*/
+app.get('/yelp', async (req, res) => {
+    let data = {id: "", name: "", rating: "", address: "", recent_review: "", url: ""};
+    await client.search({
+        term: 'restaurants',
+        location: 'berkeley, ca'
+    }).then(response => {
+        let suggestedRestaurant = response.jsonBody.businesses[Math.floor(Math.random() * response.jsonBody.businesses.length)];
+        data.id = suggestedRestaurant.id;
+        data.name = suggestedRestaurant.name;
+        data.rating = suggestedRestaurant.rating;
+        data.address = suggestedRestaurant.location.address1;
+        data.url = suggestedRestaurant.url;
+        
+    }).catch(e => { console.log(e) });
+
+    await client.reviews(data.id).then(response => {
+        data.recent_review = response.jsonBody.reviews[0].text;
+      }).catch(e => { console.log(e)});
+
+    res.send(data);
+})
+
+app.listen(2023, () => {console.log("App is running.")});
