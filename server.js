@@ -68,18 +68,30 @@ app.post('/deleteTask/:id', async (req, res) => {
 
 
 /*
-    @description: Returns data about news in berkeley
+    @description: Returns data about 3 news articles about berkeley
     @return: JSON object
-    @status: not tested yet
+        title: title of the article
+        url: url to the article
+        publishedAt: date of the article's publication
+    @status: works correctly
 */
 app.get('/news', (req, res) => {
-    newsapi.v2.topHeadlines({
-        country: 'us',
-        q: 'berkeley',
-        language: 'en'
+    newsapi.v2.everything({
+        q: '+berkeley',
+        searchIn: 'title',
+        language: 'en',
+        sortBy: 'publishedAt, popularity',
+        excludeDomains: 'funcheap.com, google.com',
+        pageSize: 3
     }).then(response => {
-        res.send(response);
-    })
+        let data = {title: [], url: [], publishedAt: []}
+        for (var i = 0; i < Math.min(3, response.articles.length); i++) {
+            data.title.push(response.articles[i].title);
+            data.url.push(response.articles[i].url);
+            data.publishedAt.push(response.articles[i].publishedAt.substring(0, 10));
+        }
+        res.send(data);
+    }).catch(error => console.log(error));
 })
 
 
