@@ -101,17 +101,17 @@ app.get('/news', (req, res) => {
         temp: temperature in Fahrenheit
         status: description of the weather
         date: the hour for the data
-    @status: not tested yet
+    @status: works correctly
 */
 app.get('/weather', (req, res) => {
     const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${37.867876}&lon=${-122.255469}&appid=3453ef5a617b0f8aff2cd4426a958d7f&units=imperial`
     axios.get(url)
     .then(response => {
         let data = {temp: [], description:[], hour: []};
-        for (const day of response.data.list) {
-            data.temp.push(day.main.temp);
-            data.description.push(day.weather[0].main);
-            data.hour.push(day.dt_txt)
+        for (var i = 0; i < 8; i++) {
+            data.temp.push(response.data.list[i].main.temp);
+            data.description.push(response.data.list[i].weather[0].main);
+            data.hour.push(response.data.list[i].dt_txt.substring(5, response.data.list[i].dt_txt.length - 3));
         }
         res.send(data);
     })
@@ -134,7 +134,6 @@ app.get('/reddit', (req, res) => {
     .then(response => {
         let data = {time_ago: [], upvotes: [], flair: [], title: [], url: []};
         for (var i = 2; i < 5; i++) {
-            
             let calculated_time = new Date(response.data.data.children[i].data.created_utc * 1000);
             calculated_time = Math.round((new Date() - calculated_time) / 3600000);
             data.time_ago.push(calculated_time);
