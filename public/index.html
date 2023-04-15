@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Dashboard</title>
+    <link rel="stylesheet" href="styles.css"></link>
+    <script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+    <h1>Personal Dashboard</h1>
+
+    <div class="container">
+
+        <div class="topRowContainer">
+            <div class="box restaurantContainer">
+                <h2>Suggested Restaurant</h2>
+                <h2>Shop Name</h2>
+                <p>Ratings: 4/5 stars</p>
+                <p>Address Name Here</p>
+                <p>Most Recent Review</p>
+            </div>
+            <div class="box taskContainer">
+                <h2>Tasks</h2>
+            
+                <div class="taskRowContainer">
+                    <div class="taskRow">
+                        <div class="taskRowCell"></div>
+                        <div class="taskRowCell"></div>
+                        <div class="taskRowCell"></div>
+                    </div>
+                    <div class="taskRow">
+                        <div class="taskRowCell"></div>
+                        <div class="taskRowCell"></div>
+                        <div class="taskRowCell"></div>
+                    </div>
+                    <div class="taskRow">
+                        <div class="taskRowCell"></div>
+                        <div class="taskRowCell"></div>
+                        <div class="taskRowCell"></div>
+                    </div>
+                    <div class="taskRow">
+                        <div class="taskRowCell"></div>
+                        <div class="taskRowCell"></div>
+                        <div class="taskRowCell"></div>
+                    </div>
+                    <div class="taskRow">
+                        <div class="taskRowCell"></div>
+                        <div class="taskRowCell"></div>
+                        <div class="taskRowCell"></div>
+                    </div>
+                    <div class="taskRow">
+                        <div class="taskRowCell"></div>
+                        <div class="taskRowCell"></div>
+                        <div class="taskRowCell"></div>
+                    </div>
+                </div>
+
+                <div class="sideBarContainer">
+                    <h3>Filter</h3>
+                    <p>Show <input type="text" id="showInput"> tag only</p>
+                    <button id="filterButton">Filter</button>
+                    
+                    <h3 id="createTaskHeader">Create Task</h3>
+                    <p id="titleLabel">Title: <input type="text" id="titleInput"></p>
+                    <p id="tagLabel">Tag: <input type="text" id="tagInput" /></p>
+                    <button id="addButton">+</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bottomRowContainer">
+            <div class="box redditContainer">
+                <h2>Reddit</h2>
+                <div class="redditRowContainer">
+                    <div class="redditRow"></div>
+                    <div class="redditRow"></div>
+                    <div class="redditRow"></div>
+                </div>
+            </div>
+            <div class="box newsContainer">
+                <h2>News</h2>
+                <div class="newsRowContainer">
+                    <div class="newsRow"></div>
+                    <div class="newsRow"></div>
+                    <div class="newsRow"></div>
+                </div>
+            </div>
+
+            <div class="box weatherContainer">
+                <h2>Weather</h2>
+                <div class="weatherInformationContainer">
+                    <div class="weatherColumn">
+                        <div class="hourCell">
+                            <h3>Hr</h3>
+                        </div>
+                    </div>
+                    <div class="weatherColumn">
+                        <div class="fahrenheitCell">
+                            <h3>°F</h3>
+                        </div>
+                    </div>
+                    <div class="weatherColumn">
+                        <div class="celciusCell">
+                            <h3>°C</h3>
+                        </div>
+                    </div>
+                    <div class="descriptionCell descriptionColumn"></div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+</body>
+</html>
