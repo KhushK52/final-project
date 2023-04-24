@@ -1,3 +1,7 @@
+/*
+    Type 'node server.js' to start the server then visit localhost:2023 in your browser to see the site
+*/
+
 // Imports
 const express = require("express");
 const newsApi = require("newsapi");
