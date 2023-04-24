@@ -43,6 +43,7 @@ h2, h3{
     width: 100%;
     height: 250px;
     border: 2px solid black;
+    border-radius: 15px;
 }
 
 .restaurantContainer{
@@ -76,17 +77,36 @@ h2, h3{
     margin: auto;
     margin-top: -20px;
     width: 90%;
-    height: 85%;
+    height: 80%;
     border: 1px solid black;
+
 }
 
 .weatherColumn{
     border: 1px solid black;
-    width: 15%;
+    width: 18%;
     height: 100%;
 }
 
+.descriptionColumn{
+    border: 1px solid black;
+    width: 46%;
+    height: 100%;
+}
+
+
 .hourCell, .fahrenheitCell, .celciusCell{
+    border: 1px solid black;
+    width: 100%;
+    height: 15%;
+}
+
+.weatherSingleCell{
+    width: 100%;
+    height: 15.7%;
+}
+
+.descriptionCell {
     border: 1px solid black;
     width: 100%;
     height: 15%;
