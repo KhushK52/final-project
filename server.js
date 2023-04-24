@@ -1,5 +1,5 @@
 /*
-    Type 'node server.js' to start the server then visit localhost:2023 in your browser to see the site
+    Type 'node server.js' in the terminal to start the server then visit localhost:2023 in your browser to see the site
 */
 
 // Imports
