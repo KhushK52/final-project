@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Dashboard</title>
     <link rel="stylesheet" href="styles.css"></link>
-    <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
     <h1>Personal Dashboard</h1>
@@ -14,16 +13,19 @@
     <div class="container">
 
         <div class="topRowContainer">
-            <div class="box restaurantContainer">
+            <div class="box restaurantContainer" id="yelpBox">
                 <h2>Suggested Restaurant</h2>
-                <h2>Shop Name</h2>
-                <p>Ratings: 4/5 stars</p>
-                <p>Address Name Here</p>
-                <p>Most Recent Review</p>
+                <h2 id="restaurantName"></h2>
+                <p id="yelpRating"></p>
+                <p id="address"></p>
+                <p id="review"></p>
+                <p id="someUrl"></p>
+                <button id="newRestaurant">Click For New Restaurant</button>
             </div>
+
             <div class="box taskContainer">
                 <h2>Tasks</h2>
-            
+
                 <div class="taskRowContainer">
                     <div class="taskRow">
                         <div class="taskRowCell"></div>
@@ -74,18 +76,22 @@
         <div class="bottomRowContainer">
             <div class="box redditContainer">
                 <h2>Reddit</h2>
+
                 <div class="redditRowContainer">
-                    <div class="redditRow"></div>
-                    <div class="redditRow"></div>
-                    <div class="redditRow"></div>
+                    <div class="redditRow" id="redditRow1"></div>
+                    <div class="redditRow" id="redditRow2"></div>
+                    <div class="redditRow" id="redditRow3"></div>
                 </div>
             </div>
+            
             <div class="box newsContainer">
-                <h2>News</h2>
-                <div class="newsRowContainer">
-                    <div class="newsRow"></div>
-                    <div class="newsRow"></div>
-                    <div class="newsRow"></div>
+                <h2>Berkeley News</h2>
+               
+
+                <div class="newsRowContainer" id="newsBox">
+                    <div class="newsRow" id="newsRow1"></div>
+                    <div class="newsRow" id="newsRow2"></div>
+                    <div class="newsRow" id="newsRow3"></div>
                 </div>
             </div>
 

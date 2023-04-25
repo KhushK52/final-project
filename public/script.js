@@ -104,3 +104,105 @@ async function setWeatherDescription(city) {
 let city = prompt("Please enter your city:", "Berkeley");
 setWeatherDescription(city);
 
+//YELP 
+yelpRating=document.getElementById('yelpRating')
+address=document.getElementById('address')
+review=document.getElementById('review')
+newRestaurant=document.getElementById('newRestaurant')
+yelpBox=document.getElementById('yelpBox')
+someUrl=document.getElementById('someUrl')
+restaurantName=document.getElementById('restaurantName')
+
+async function getRequest(url){
+  const res=await fetch(url);
+  const data=await res.json();
+  return data
+}
+
+async function updateYelpBox() {
+  const url = "http://localhost:2023/yelp";
+  const response = await getRequest(url);
+  //yelpBox.value=`<a href="${response.url}"</a>`;
+  restaurantName.innerHTML = `<a href="${response.url}" target="_blank">${response.name}</a>`
+  yelpRating.innerHTML='<span style="font-weight:bold;">Rating: </span>'+ response.rating + ' stars'
+  address.innerHTML = '<span style="font-weight:bold;">Address: </span>' + response.address;
+  review.innerHTML = '<span style="font-weight:bold;">Recent Review: </span>' + response.recent_review;
+
+}
+
+updateYelpBox()
+
+newRestaurant.onclick=()=>{
+  updateYelpBox()
+ }
+
+
+
+//NEWS
+
+newsRow1=document.getElementById('newsRow1')
+newsRow2=document.getElementById('newsRow2')
+newsRow3=document.getElementById('newsRow3')
+
+ newsBox=document.getElementById('newsBox')
+
+
+
+async function updateNews() {
+  const url = "http://localhost:2023/news";
+  const response = await getRequest(url);
+  //yelpBox.value=`<a href="${response.url}"</a>`;
+  newsRow1.innerHTML=`<p>${response.publishedAt[0]}</p>`+ `<a href="${response.url[0]}"><h2>${response.title[0]}</h2></a>`
+  newsRow2.innerHTML=`<p>${response.publishedAt[1]}</p>`+ `<a href="${response.url[1]}"><h2>${response.title[1]}</h2></a>`
+  newsRow3.innerHTML=`<p>${response.publishedAt[2]}</p>`+ `<a href="${response.url[2]}"><h2>${response.title[2]}</h2></a>`
+
+}
+
+updateNews()
+
+
+//REDDIT
+
+
+redditRow1=document.getElementById('redditRow1')
+redditRow2=document.getElementById('redditRow2')
+redditRow3=document.getElementById('redditRow3')
+
+ newsBox=document.getElementById('newsBox')
+
+
+
+async function updateReddit() {
+  const url = "http://localhost:2023/reddit";
+  const response = await getRequest(url);
+  //yelpBox.value=`<a href="${response.url}"</a>`;
+  redditRow1.innerHTML=`<div style="display: flex; justify-content: flex-start; align-items: center; position: relative;">
+  <p>Posted: ${response.time_ago[0]} hours ago</p>
+  <p style="text-align: center; position: absolute; left: 50%; transform: translateX(-50%); margin: 0;">Upvotes: ${response.upvotes[0]}</p>
+  <p style="position: absolute; right: 0.5%;">Flair: ${response.flair[0]}</p>
+</div>
+<div style="display: block;">
+  <a href="${response.url[0]}"><h2>${response.title[0]}</h2></a>
+</div>`
+
+  redditRow2.innerHTML=`<div style="display: flex; justify-content: flex-start; align-items: center; position: relative;">
+  <p>Posted: ${response.time_ago[1]} hours ago</p>
+  <p style="text-align: center; position: absolute; left: 50%; transform: translateX(-50%); margin: 0;">Upvotes: ${response.upvotes[1]}</p>
+  <p style="position: absolute; right: 0.5%;">Flair: ${response.flair[1]}</p>
+</div>
+<div style="display: block;">
+  <a href="${response.url[1]}"><h2>${response.title[1]}</h2></a>
+</div>`
+
+  redditRow3.innerHTML=`<div style="display: flex; justify-content: flex-start; align-items: center; position: relative;">
+  <p>Posted: ${response.time_ago[2]} hours ago</p>
+  <p style="text-align: center; position: absolute; left: 50%; transform: translateX(-50%); margin: 0;">Upvotes: ${response.upvotes[2]}</p>
+  <p style="position: absolute; right: 0.5%;">Flair: ${response.flair[2]}</p>
+</div>
+<div style="display: block;">
+  <a href="${response.url[2]}"><h2>${response.title[2]}</h2></a>
+</div>`
+
+}
+
+updateReddit()
