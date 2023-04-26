@@ -3,14 +3,28 @@ html{
     overflow: scroll;
 }
 
+body{
+    background-color: whitesmoke;
+}
+
 h1, h2, h3{
     text-align: center;
 }
 
-h2, h3{
-    margin-top: -1px;
+h1{
+    font-family: 'Open Sans 600', sans-serif;
+    font-size: 40px;
 }
 
+h2, h3{
+    margin-top: -1px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+p{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+}
 
 .container{
     display: flex;
@@ -22,6 +36,7 @@ h2, h3{
     background-color: white;
     border-radius: 10px;
     /*600px*/
+    background-color: antiquewhite;
 }
 
 .topRowContainer{
@@ -120,7 +135,6 @@ h2, h3{
     border: 1px solid black;
     width: 18%;
     height: 100%;
-    overflow: scroll;
     background: radial-gradient(circle at 10% 20%, rgb(226, 240, 254) 0%, rgb(255, 247, 228) 90%);
 }
 
